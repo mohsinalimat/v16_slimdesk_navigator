@@ -3,7 +3,7 @@ frappe.provide('frappe.ui');
 frappe.ui.SlimDesk = class SlimDesk {
     constructor() {
         this.wrapper = $('#slim-sidebar');
-        console.log("SlimDesk v3.39 Init");
+        console.log("SlimDesk v3.40 Init");
         this.init_when_ready();
     }
 
@@ -363,35 +363,7 @@ frappe.ui.SlimDesk = class SlimDesk {
 
     // ...
 
-    fetch_data() {
-        this.config = [];
-        this.workspaces = [];
-
-        // 1. Get User Saved Config
-        let saved_config = null;
-        try {
-            if (frappe.boot.user.slim_desk_config) {
-                saved_config = JSON.parse(frappe.boot.user.slim_desk_config);
-            }
-        } catch (e) { }
-
-        // 2. Get Standard Workspaces (Filter like Sidebar)
-        if (frappe.boot.workspace_sidebar_item && frappe.boot.workspace_sidebar_item.pages) {
-            this.workspaces = frappe.boot.workspace_sidebar_item.pages
-                .filter(p => !p.public || (p.public && !p.name.includes('Settings'))) // Filter logic
-                .map(p => this.workspace_to_item(p));
-        } else if (frappe.boot.workspaces && frappe.boot.workspaces.pages) {
-            // Fallback
-            this.workspaces = frappe.boot.workspaces.pages.map(p => this.workspace_to_item(p));
-        }
-
-        if (saved_config && Array.isArray(saved_config) && saved_config.length > 0) {
-            this.config = saved_config;
-        } else {
-            // Default: Use Sidebar Logic (Standard Sidebar Items only)
-            this.config = this.workspaces.slice();
-        }
-    }
+    // [Deleted Duplicate fetch_data method]
 
     prompt_add_item(parent_dialog, type) {
         if (type === 'workspace') {
