@@ -1,4 +1,4 @@
-/* SlimDesk Sidebar Styles - Dark Theme v3.37 */
+/* SlimDesk Sidebar Styles - Dark Theme v3.38 */
 
 body {
     padding-left: 60px !important;
@@ -11,15 +11,10 @@ body {
     left: 0;
     height: 100vh;
     width: 60px;
-    background-color: #1a202c;
-    /* Dark Slate 900 */
-    border-right: 1px solid #2d3748;
-    z-index: 90;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 8px;
+    /* Reduced from 15px */
+    padding-bottom: 10px;
 }
 
 .slim-top-section,
@@ -36,7 +31,8 @@ body {
     height: 1px;
     width: 70%;
     background-color: #4a5568;
-    margin: 12px 0;
+    margin: 6px 0;
+    /* Reduced from 12px */
 }
 
 .slim-scroll-section {
@@ -47,7 +43,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
+    /* Reduced to maximize space */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
