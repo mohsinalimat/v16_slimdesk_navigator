@@ -3,7 +3,7 @@ frappe.provide('frappe.ui');
 frappe.ui.SlimDesk = class SlimDesk {
     constructor() {
         this.wrapper = $('#slim-sidebar');
-        console.log("SlimDesk v3.36 Init");
+        console.log("SlimDesk v3.37 Init");
         this.init_when_ready();
     }
 
@@ -427,12 +427,13 @@ frappe.ui.SlimDesk = class SlimDesk {
                 {
                     label: 'Link Type', fieldname: 'shortcut_type', fieldtype: 'Select',
                     options: ['DocType', 'Report', 'Page', 'Custom Route'],
-                    default: 'DocType',
+                    default: existing_data && existing_data.link_type ? existing_data.link_type : 'DocType',
                     reqd: 1
                 },
                 {
                     label: 'DocType', fieldname: 'ref_doctype', fieldtype: 'Link', options: 'DocType',
                     depends_on: 'eval:doc.shortcut_type=="DocType"',
+                    default: existing_data && existing_data.ref_doctype ? existing_data.ref_doctype : '',
                     onchange: () => {
                         let val = d.get_value('ref_doctype');
                         if (val) {
@@ -447,6 +448,7 @@ frappe.ui.SlimDesk = class SlimDesk {
                 {
                     label: 'Report', fieldname: 'ref_report', fieldtype: 'Link', options: 'Report',
                     depends_on: 'eval:doc.shortcut_type=="Report"',
+                    default: existing_data && existing_data.ref_report ? existing_data.ref_report : '',
                     onchange: () => {
                         let val = d.get_value('ref_report');
                         if (val) {
@@ -462,6 +464,13 @@ frappe.ui.SlimDesk = class SlimDesk {
                                             route = `/app/query-report/${val}`;
                                         }
                                         d.set_value('route', route);
+
+                                        // Auto-Fetch Icon from Ref DocType
+                                        if (report.ref_doctype) {
+                                            frappe.db.get_value('DocType', report.ref_doctype, 'icon').then(rr => {
+                                                if (rr && rr.message && rr.message.icon) d.set_value('icon', rr.message.icon);
+                                            });
+                                        }
                                     }
                                 });
                         }
@@ -470,6 +479,7 @@ frappe.ui.SlimDesk = class SlimDesk {
                 {
                     label: 'Page', fieldname: 'ref_page', fieldtype: 'Link', options: 'Page',
                     depends_on: 'eval:doc.shortcut_type=="Page"',
+                    default: existing_data && existing_data.ref_page ? existing_data.ref_page : '',
                     onchange: () => {
                         let val = d.get_value('ref_page');
                         if (val) {
@@ -488,7 +498,12 @@ frappe.ui.SlimDesk = class SlimDesk {
                     label: values.label,
                     route: values.route,
                     icon: values.icon,
-                    use_letter: !values.icon
+                    use_letter: !values.icon,
+                    // Persist Source Metadata
+                    link_type: values.shortcut_type,
+                    ref_doctype: values.ref_doctype,
+                    ref_report: values.ref_report,
+                    ref_page: values.ref_page
                 };
 
                 if (is_edit && $existing_row) {

@@ -1,4 +1,4 @@
-/* SlimDesk Sidebar Styles - Dark Theme v3.35 */
+/* SlimDesk Sidebar Styles - Dark Theme v3.37 */
 
 body {
     padding-left: 60px !important;
@@ -29,6 +29,14 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+
+.slim-bottom-section::before {
+    content: '';
+    height: 1px;
+    width: 70%;
+    background-color: #4a5568;
+    margin: 12px 0;
 }
 
 .slim-scroll-section {
@@ -154,7 +162,7 @@ body {
 
 .slim-text-icon {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 
