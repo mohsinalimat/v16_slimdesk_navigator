@@ -251,8 +251,14 @@ body {
     transition: all 0.2s ease;
 }
 
-#slim-sidebar .slim-icon-wrapper.active .slim-svg-icon,
-#slim-sidebar .slim-icon-wrapper:hover .slim-svg-icon {
+#slim-sidebar .slim-icon-wrapper.active .slim-svg-icon {
+    /* High Contrast: Pure White Icon on Blue Background */
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+#slim-sidebar .slim-icon-wrapper:hover:not(.active) .slim-svg-icon {
+    /* Hover: Full Original Color */
     filter: none;
     opacity: 1;
 }
