@@ -325,7 +325,7 @@ d.add_custom_action('Restore Defaults', () => {
     frappe.confirm('Are you sure you want to restore the default sidebar layout? This will remove all custom shortcuts.', () => {
         this.restore_defaults(d);
     });
-}, 'btn-danger btn-xs'); // Try generic class or styling later if needed. Standard is fine.
+});
 
 
 d.show();

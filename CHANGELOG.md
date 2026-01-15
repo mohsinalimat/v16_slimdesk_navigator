@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.45] - 2026-01-15
+### Fixed
+- **UI:** Simplified "Restore Defaults" button implementation to use standard `add_custom_action` matching other buttons.
+
 ## [v3.44] - 2026-01-15
 ### Fixed
 - **UI:** Reverted "Restore Defaults" button implementation to direct DOM injection to ensure visibility in the dialog footer.
