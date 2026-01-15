@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.42] - 2026-01-15
+### Added
+- **Restore Defaults:** Added a button to the "Customize Sidebar" dialog that allows users to reset their layout to the system defaults (clearing all custom shortcuts and re-fetching auto-discovered workspaces).
+
 ## [v3.41] - 2026-01-15
 ### Fixed
 - **Unresponsive Icons:** Refactored event binding from global delegation to direct DOM attachment. This resolves an issue where icons became unclickable after a system reload (soft refresh).

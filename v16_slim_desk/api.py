@@ -13,6 +13,11 @@ def save_config(workspaces):
         except:
             pass
     
+    # If None, clear the default
+    if workspaces is None:
+        frappe.defaults.clear_user_default("slim_desk_config")
+        return "cleared"
+
     # Ensure it's a list
     if not isinstance(workspaces, list):
         frappe.throw("Invalid workspace list")
@@ -20,4 +25,4 @@ def save_config(workspaces):
     # Save as User Default
     frappe.defaults.set_user_default("slim_desk_config", json.dumps(workspaces))
     
-    return "success"
+    return "saved"
