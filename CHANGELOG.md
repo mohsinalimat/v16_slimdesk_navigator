@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.48] - 2026-01-15
+### Changed
+- **UI:** Removed the experimental "Restore Defaults" button due to persistent layout issues.
+- **UI:** Added spacing between "Add Shortcut" and "Add Workspace" buttons in the customization dialog.
+
 ## [v3.47] - 2026-01-15
 ### Fixed
 - **Installation:** Added missing `translations` directory to fix `get_app_path` errors during installation in strict Docker/CI environments.
