@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.53] - 2026-01-16
+### Fixed
+- **Installation:** Guaranteed `modules.txt` is 0 bytes (previous fix halted by path error). This ensures the app is treated as a pure plugin with no module sync.
+
 ## [v3.52] - 2026-01-16
 ### Fixed
 - **Installation:** Ensured `modules.txt` is completely empty (0 bytes). Previous attempt might have left a trailing character. This guarantees no module sync is attempted.
