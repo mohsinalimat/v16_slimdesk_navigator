@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.49] - 2026-01-16
+### Fixed
+- **Installation:** Fixed incorrect path for `translations` directory (was nested too deep).
+- **Installation:** Added dummy `main.csv` to satisfy stricter Docker build translation checks.
+
 ## [v3.48] - 2026-01-15
 ### Changed
 - **UI:** Removed the experimental "Restore Defaults" button due to persistent layout issues.
