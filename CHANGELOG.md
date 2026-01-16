@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.56] - 2026-01-16
+### Fixed
+- **Installation:** Switched build backend from `flit` to `setuptools` to fix critical Docker installation issues. `flit` was ignoring `MANIFEST.in`, causing assets and sometimes the module itself to be missing in wheel builds. `setuptools` ensures reliable packaging.
+
 ## [v3.55] - 2026-01-16
 ### Fixed
 - **Installation:** Re-created `modules.txt` ensuring strict ASCII/UTF-8 encoding (previously contained UTF-16 BOM causing UnicodeDecodeError).
