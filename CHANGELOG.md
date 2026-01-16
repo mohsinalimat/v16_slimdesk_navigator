@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.47] - 2026-01-15
+### Fixed
+- **Installation:** Added missing `translations` directory to fix `get_app_path` errors during installation in strict Docker/CI environments.
+
 ## [v3.46] - 2026-01-15
 ### Fixed
 - **UI:** Moved "Restore Defaults" button to the Dialog Header (top-right) for better visibility and reliability.
