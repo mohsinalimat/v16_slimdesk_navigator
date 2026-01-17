@@ -309,24 +309,32 @@ frappe.ui.SlimDesk = class SlimDesk {
     }
 
     open_customize_dialog() {
-        const d = new frappe.ui.Dialog({
-            title: 'Customize Sidebar',
-            fields: [{ fieldtype: 'HTML', fieldname: 'list_editor' }],
-            primary_action_label: 'Save Changes',
-            primary_action: () => this.save_changes(d)
-        });
+        console.log("SlimDesk: Open Customize Dialog Clicked");
+        try {
+            const d = new frappe.ui.Dialog({
+                title: 'Customize Sidebar',
+                fields: [{ fieldtype: 'HTML', fieldname: 'list_editor' }],
+                primary_action_label: 'Save Changes',
+                primary_action: () => this.save_changes(d)
+            });
 
+            console.log("SlimDesk: Dialog Instance Created", d);
 
-        this.render_sortable_list(d.fields_dict.list_editor.$wrapper, d);
-        let $btn_shortcut = d.add_custom_action('Add Shortcut', () => this.prompt_add_item(d, 'shortcut'));
-        if ($btn_shortcut) { // Add if block for button existence.
-            if ($btn_shortcut.addClass) {
-                $btn_shortcut.addClass('mr-2'); // Add spacing
+            this.render_sortable_list(d.fields_dict.list_editor.$wrapper, d);
+            console.log("SlimDesk: Sortable List Rendered");
+
+            let $btn_shortcut = d.add_custom_action('Add Shortcut', () => this.prompt_add_item(d, 'shortcut'));
+            if ($btn_shortcut && $btn_shortcut.addClass) {
+                $btn_shortcut.addClass('mr-2');
             }
-        }
-        d.add_custom_action('Add Workspace', () => this.prompt_add_item(d, 'workspace'));
+            d.add_custom_action('Add Workspace', () => this.prompt_add_item(d, 'workspace'));
 
-        d.show();
+            d.show();
+            console.log("SlimDesk: Dialog Shown");
+        } catch (e) {
+            console.error("SlimDesk: Crash in open_customize_dialog", e);
+            frappe.msgprint("SlimDesk Error: " + e.message);
+        }
     }
 
     render_sortable_list($parent, dialog) {
