@@ -323,19 +323,17 @@ frappe.ui.SlimDesk = class SlimDesk {
                     });
                 });
             });
-            // Improve Styling: Smaller Font, Better Spacing
-            if ($btn_reset) $btn_reset.css({ 'font-size': '12px' });
+            // Use Standard Bootstrap Classes/Frappe Utils
+            if ($btn_reset) $btn_reset.addClass('btn-xs text-muted');
 
             let $btn_shortcut = d.add_custom_action('Add Shortcut', () => this.prompt_add_item(d, 'shortcut'));
             if ($btn_shortcut) {
-                // Force spacing and size
-                $btn_shortcut.css({ 'margin-right': '15px', 'font-size': '12px' });
-                $btn_shortcut.addClass('mr-3'); // Bootstrap class as backup
+                $btn_shortcut.addClass('btn-sm me-2'); // Standard spacing
             }
 
             let $btn_workspace = d.add_custom_action('Add Workspace', () => this.prompt_add_item(d, 'workspace'));
             if ($btn_workspace) {
-                $btn_workspace.css({ 'font-size': '12px' });
+                $btn_workspace.addClass('btn-sm');
             }
 
             d.show();
