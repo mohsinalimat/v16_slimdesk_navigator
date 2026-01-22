@@ -26,3 +26,11 @@ def save_config(workspaces):
     frappe.defaults.set_user_default("slim_desk_config", json.dumps(workspaces))
     
     return "saved"
+
+@frappe.whitelist()
+def reset_config():
+    """
+    Resets the sidebar configuration to system defaults.
+    """
+    frappe.defaults.clear_user_default("slim_desk_config")
+    return "reset"

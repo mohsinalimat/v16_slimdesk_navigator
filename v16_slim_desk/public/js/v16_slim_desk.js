@@ -255,7 +255,10 @@ frappe.ui.SlimDesk = class SlimDesk {
                 'getting-started': 'fa fa-rocket',
 
                 // Build Fallback
-                'hammer': '/assets/frappe/icons/desktop_icons/subtle/build.svg'
+                'hammer': '/assets/frappe/icons/desktop_icons/subtle/build.svg',
+                'bone': 'fa fa-bone',
+                'amazon': 'fa fa-amazon',
+                'cart': 'fa fa-shopping-cart'
             };
 
             // FontAwesome Validation (Standard + Builder Fix)
@@ -323,9 +326,28 @@ frappe.ui.SlimDesk = class SlimDesk {
             this.render_sortable_list(d.fields_dict.list_editor.$wrapper, d);
             console.log("SlimDesk: Sortable List Rendered");
 
+
+            let $btn_reset = d.add_custom_action('Reset Defaults', () => {
+                frappe.confirm('Are you sure you want to reset the sidebar to defaults?', () => {
+                    frappe.call({
+                        method: "v16_slim_desk.api.reset_config",
+                        callback: () => {
+                            this.fetch_data(); // reload from boot/defaults
+                            this.render_items();
+                            frappe.msgprint("Sidebar reset to defaults.");
+                            d.hide();
+                            // Optional: Re-open dialog to show reset state? 
+                            // this.open_customize_dialog(); 
+                        }
+                    });
+                });
+            });
+            // Float Reset to the left? By default actions are left-aligned.
+            // Let's separate Add buttons.
+
             let $btn_shortcut = d.add_custom_action('Add Shortcut', () => this.prompt_add_item(d, 'shortcut'));
-            if ($btn_shortcut && $btn_shortcut.addClass) {
-                $btn_shortcut.addClass('mr-2');
+            if ($btn_shortcut) {
+                $btn_shortcut.css('margin-right', '10px'); // Explicit spacing
             }
             d.add_custom_action('Add Workspace', () => this.prompt_add_item(d, 'workspace'));
 
