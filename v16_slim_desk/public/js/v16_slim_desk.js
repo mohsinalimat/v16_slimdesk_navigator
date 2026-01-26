@@ -3,7 +3,7 @@ frappe.provide('frappe.ui');
 frappe.ui.SlimDesk = class SlimDesk {
     constructor() {
         this.wrapper = $('#slim-sidebar');
-        console.log("SlimDesk v3.79 Init");
+        console.log("SlimDesk v3.80 Init");
         this.init_when_ready();
     }
 
@@ -34,7 +34,7 @@ frappe.ui.SlimDesk = class SlimDesk {
             <div id="slim-sidebar">
                 <div class="slim-top-section">
                     <div class="slim-icon slim-home-icon" data-toggle="tooltip" title="Desk">
-                        ${frappe.utils.icon('grid', 'lg')}
+                        ${frappe.utils.icon('grid', 'md')}
                     </div>
                     <div class="slim-divider"></div>
                 </div>
@@ -43,6 +43,7 @@ frappe.ui.SlimDesk = class SlimDesk {
                     <div class="slim-icon slim-edit-icon" data-toggle="tooltip" title="Customize">
                          ${frappe.utils.icon('edit', 'md')}
                     </div>
+                    <div class="slim-branding">SlimDesk</div>
                 </div>
             </div>
         `).prependTo('body');
