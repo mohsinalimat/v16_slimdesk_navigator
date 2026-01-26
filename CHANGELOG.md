@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.71] - 2026-01-26
+### Docs
+- Updated README to highlight Scrollable support and "Reset to Defaults" functionality.
+- Corrected feature summary (Persistent, not auto-hiding).
+
 ## [v3.70] - 2026-01-26
 ### Fixed
 - **Highlight Sync:** Sidebar now correctly updates the active item when switching workspaces via the native Frappe dropdown (fixed routing mismatch for paths like `Workspaces/Home`).

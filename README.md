@@ -9,11 +9,12 @@ In the standard Frappe v16 UI, navigating between different modules (e.g., *Buyi
 
 ### Key Features
 *   **Persistent & Unobtrusive:** Always accessible, taking up minimal screen real estate (60px).
+*   **Scrollable Area:** Supports unlimited items with smooth mouse-wheel scrolling.
 *   **Dark Theme:** Sleek sidebar aesthetics with a dedicated dark mode (`#1a202c`) and high-contrast active states.
 *   **Smart Shortcuts:** Add shortcuts to **DocTypes, Reports, or Pages**.
 *   **Context Retention:** Switch apps without returning to the "Desktop" grid.
 *   **Auto-Discovery:** Automatically detects icons for your installed apps.
-*   **Fully Customizable:** Drag & drop reordering via a simple "Edit" dialog.
+*   **Fully Customizable:** Drag & drop reordering, add new workspaces/shortcuts, or **Reset to Defaults** via the "Edit" dialog.
 
 ## Screenshots
 
