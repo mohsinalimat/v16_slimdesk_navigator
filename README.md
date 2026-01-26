@@ -59,6 +59,7 @@ Add shortcuts to DocTypes, specific Reports, or Pages.
 *   **ERPNext:** v15, v16+
 
 ## Release History
+*   **v3.74:** UI Standardization (Icons & Spacing) and Release Consistency.
 *   **v3.70:** Logic fixes for Workspace Dropdown sync and improved focus handling.
 *   **v3.6x:** Stability improvements and Docker compatibility fixes.
 *   **v3.35:** Initial Public Release.

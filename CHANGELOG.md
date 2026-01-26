@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.74] - 2026-01-26
+### Changed
+- **UI:** Standardized all icons (SVG, FontAwesome, Image, Text) to ~28px size with a consistent 38px wrapper.
+- **UI:** Removed the dark background box from Text icons to match the transparent style of other icons.
+- **Build:** Enforce version consistency across all asset files.
+
 ## [v3.73] - 2026-01-26
 ### Changed
 - **UI:** Reduced vertical spacing between sidebar icons (from 10px to 6px) to accommodate more items in the viewport.
