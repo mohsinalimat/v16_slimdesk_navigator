@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.85] - 2026-01-26
+### Changed
+- **Fix:** CSS Scoping issue resolved. Generic icon classes (`.icon-lg`, `.icon-md`) are now properly scoped to the sidebar only, preventing unintended resizing of global icons (e.g., Notification Bell).
+- **Release:** Clean version bump to ensure cache consistency.
+
 ## [v3.82] - 2026-01-26
 ### Changed
 - **UI:** Branding text "SlimDesk" moved to the absolute bottom (5px margin) for maximum vertical spacing.
