@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.75] - 2026-01-26
+### Changed
+- **UI:** Implemented "Full Bleed" icon style. Wrappers are now 32px x 32px with **zero padding**, and icons are forced to 100% width/height. This maximizes icon visibility and removes visual gaps.
+
 ## [v3.74] - 2026-01-26
 ### Changed
 - **UI:** Standardized all icons (SVG, FontAwesome, Image, Text) to ~28px size with a consistent 38px wrapper.
