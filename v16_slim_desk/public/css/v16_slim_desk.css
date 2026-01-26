@@ -1,4 +1,4 @@
-/* SlimDesk Sidebar Styles - Dark Theme v3.81 */
+/* SlimDesk Sidebar Styles - Dark Theme v3.82 */
 
 body {
     padding-left: 60px !important;
@@ -23,7 +23,8 @@ body {
     /* Restored */
     align-items: center;
     padding-top: 8px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
+    /* Reduced to 0 to push branding down */
 }
 
 .slim-top-section,
@@ -159,8 +160,10 @@ body {
     color: #4a5568;
     text-align: center;
     width: 100%;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 4px;
+    /* Reduced top margin to tighten pen gap */
+    margin-bottom: 5px;
+    /* Exact 5px from absolute bottom */
     line-height: 1;
     letter-spacing: 0.5px;
     /* text-transform: uppercase; Removed validation since user asked for Title Case */
