@@ -3,7 +3,7 @@ frappe.provide('frappe.ui');
 frappe.ui.SlimDesk = class SlimDesk {
     constructor() {
         this.wrapper = $('#slim-sidebar');
-        console.log("SlimDesk v3.78 Init");
+        console.log("SlimDesk v3.79 Init");
         this.init_when_ready();
     }
 
@@ -281,46 +281,45 @@ frappe.ui.SlimDesk = class SlimDesk {
         }
     }
 
-    highlight_active() {
+    highlight_active(retry_count = 0) {
         if ($('#slim-sidebar').length === 0) return;
-        let current_route_parts = frappe.get_route();
-        let current_route_str = current_route_parts.join('/');
 
-        // Normalize: Handle 'Workspaces/Home' -> 'Home'
-        // Some versions of Frappe use /app/workspaces/name, others /app/name
-        let clean_route = current_route_str.toLowerCase();
-        if (clean_route.startsWith('workspaces/')) {
-            clean_route = clean_route.replace('workspaces/', '');
-        }
+        const get_normalized = (r) => {
+            if (!r) return '';
+            let s = r.toLowerCase();
+            if (s.startsWith('/app/')) s = s.substring(5);
+            if (s.startsWith('private/')) s = s.replace('private/', '');
+            if (s.startsWith('workspaces/')) s = s.replace('workspaces/', '');
+            return s; // Returns just the slug e.g. 'home', 'financial-reports'
+        };
 
-        // Final check targets: /app/home and /app/private/home cases
-        let targets = [
-            '/app/' + clean_route,
-            '/app/' + current_route_str // fallback to exact
-        ];
+        let current_route = frappe.get_route_str();
+        let target_slug = get_normalized(current_route);
 
         let best_match = null;
         let max_len = 0;
 
         $('#slim-sidebar .slim-icon-wrapper').each(function () {
             let $btn = $(this);
-            let btn_route = ($btn.attr('data-route') || '').toLowerCase();
+            let raw_btn_route = $btn.attr('data-route') || '';
+            let btn_slug = get_normalized(raw_btn_route);
 
-            // Check against both normalized targets
-            targets.forEach(t => {
-                if (btn_route && t.toLowerCase().startsWith(btn_route)) {
-                    // Prioritize exact or longer matches
-                    if (btn_route.length > max_len) {
-                        max_len = btn_route.length;
-                        best_match = $btn;
-                    }
+            // Match if target starts with button slug (e.g. target='buying/purchase-order', btn='buying')
+            if (btn_slug && target_slug.startsWith(btn_slug)) {
+                if (btn_slug.length > max_len) {
+                    max_len = btn_slug.length;
+                    best_match = $btn;
                 }
-            });
+            }
         });
 
-        $('#slim-sidebar .slim-icon-wrapper').removeClass('active');
         if (best_match) {
+            $('#slim-sidebar .slim-icon-wrapper').removeClass('active');
             best_match.addClass('active');
+        } else if (retry_count < 2) {
+            // Retry twice (at 200ms and 500ms approx) if no match found immediately
+            // This handles cases where frappe.get_route() might update slightly after the event
+            setTimeout(() => this.highlight_active(retry_count + 1), 250);
         }
     }
 
